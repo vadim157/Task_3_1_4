@@ -1,19 +1,13 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">-->
-<!--<head>-->
-<!--    <title>Spring Security Example</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>Welcome to Index PAGE!</h1>-->
-
-
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>Users</title>
 </head>
 <body>
@@ -21,7 +15,7 @@
     <h2 th:case="null">No User found!</h2>
     <div th:case="*">
         <h2>Users</h2>
-        <table>
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Id</th>
@@ -32,6 +26,7 @@
                 <th>Roles</th>
                 <th>Edit</th>
                 <th>Delete</th>
+                <th>EditModal</th>
             </tr>
             </thead>
             <tbody>
@@ -48,13 +43,85 @@
                 <td><a style="color: blueviolet" th:href="@{/admin/{id}/edit(id=${user.getId()})}">Edit</a></td>
                 <td><a style="color: blueviolet" th:href="@{/admin/delete/{id}(id=${user.getId()})}">Delete</a></td>
 
+                <td>
+                    <button th:href="@{/admin/getOne/(id=${user.getId})}" class="btn btn-warning">EditModal
+                    </button>
+                </td>
+
             </tr>
             </tbody>
         </table>
     </div>
     <hr/>
-    
+
     <p><a style="color: blueviolet" href="/admin/new">Create New User</a></p>
     <p><a style="color: blueviolet" href="/logout">Logout</a></p>
 
 </div>
+
+
+<!--//////////////////////Модальное окно редактирования/////////////////-->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+    <form th:method="PUT" th:action="@{/admin/update/}" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Id</label>
+                        <input type="text" class="form-control" id="idEdit" name="idEdit">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Name</label>
+                        <input type="text" class="form-control" id="nameEdit" name="nameEdit">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Surname</label>
+                        <input type="text" class="form-control" id="surnameEdit" name="surnameEdit">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Email</label>
+                        <input type="text" class="form-control" id="emailEdit" name="emailEdit">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Username</label>
+                        <input type="text" class="form-control" id="usernameEdit" name="usernameEdit">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Password</label>
+                        <input type="text" class="form-control" id="recipient-name" name="passwordEdit">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!--////////////////////////////////////////////////конец модального окна редактирования///////////////////////-->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="../static/main.js" th:src="@{/main.js}"></script>
+</body>
+</html>

@@ -22,14 +22,14 @@ public class AdminController {
     }
 
     @GetMapping
-    public String index(Model model) {
+    public String findAll(Model model) {
         model.addAttribute("users", userService.findAll());
         return "allusers";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") Long id, Model model) throws SQLException {
-        model.addAttribute("user", userService.show(id));
+        model.addAttribute("user", userService.findById(id));
         return "show";
     }
 
@@ -47,7 +47,7 @@ public class AdminController {
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") Long id) throws SQLException {
-        model.addAttribute("user", userService.show(id));
+        model.addAttribute("user", userService.findById(id));
         return "/edit";
     }
 
@@ -68,6 +68,21 @@ public class AdminController {
         userService.delete(id);
         return "redirect:/admin/";
     }
+
+    ///////////////////////////////////////////////////////////
+    @GetMapping("/getOne")
+    @ResponseBody
+    public User getOne(Long id) {
+        return userService.findById(id);
+    }
+
+    @RequestMapping(value = "/update/",method = {RequestMethod.PUT, RequestMethod.GET})
+    public String updateUser(User user) {
+        userService.saveUser(user);
+        return "redirect:/admin/";
+    }
+
+
 }
 
 

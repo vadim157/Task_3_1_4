@@ -13,10 +13,8 @@ public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @NotNull
     private Long id;
     @Column(name = "name")
-    @NotNull
     private String name;
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
