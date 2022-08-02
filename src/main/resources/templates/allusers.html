@@ -26,27 +26,22 @@
                 <th>Roles</th>
                 <th>Edit</th>
                 <th>Delete</th>
-                <th>EditModal</th>
+
             </tr>
             </thead>
             <tbody>
             <tr th:each="user: ${users}">
 
-                <td th:text="${user.getId()}">VALUE</td>
-                <td><a th:href="@{/admin/{id}(id = ${user.getId()})}"
-                       th:text="${user.getName()}">user</a>
-                </td>
-                <td th:text="${user.getSurname()}">VALUE</td>
-                <td th:text="${user.getEmail()}">VALUE</td>
-                <td th:text="${user.getUsername()}">VALUE</td>
-                <td th:text="${user.getRoles()}">VALUE</td>
-                <td><a style="color: blueviolet" th:href="@{/admin/{id}/edit(id=${user.getId()})}">Edit</a></td>
+                <td th:text="${user.id}">VALUE</td>
+                <td th:text="${user.name}">VALUE</td>
+                <td th:text="${user.surname}">VALUE</td>
+                <td th:text="${user.email}">VALUE</td>
+                <td th:text="${user.username}">VALUE</td>
+                <td th:text="${user.roles}">VALUE</td>
+                <td><button th:href="@{/admin/getOne/(id=${user.id})}" class="btn btn-secondary">Edit</button></td>
+<!--                <td><a style="color: blueviolet" th:href="@{/admin/{id}/edit(id=${user.getId()})}">Edit</a></td>-->
                 <td><a style="color: blueviolet" th:href="@{/admin/delete/{id}(id=${user.getId()})}">Delete</a></td>
 
-                <td>
-                    <button th:href="@{/admin/getOne/(id=${user.getId})}" class="btn btn-warning">EditModal
-                    </button>
-                </td>
 
             </tr>
             </tbody>
@@ -63,7 +58,7 @@
 <!--//////////////////////Модальное окно редактирования/////////////////-->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
-    <form th:method="PUT" th:action="@{/admin/update/}" >
+    <form th:action="@{/admin/update/}" th:method="PUT" >
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -75,39 +70,39 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Id</label>
-                        <input type="text" class="form-control" id="idEdit" name="idEdit">
+                        <label for="idEdit" class="col-form-label" >Id</label>
+                        <input type="text" class="form-control" id="idEdit" name="id" disabled>
                     </div>
 
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Name</label>
-                        <input type="text" class="form-control" id="nameEdit" name="nameEdit">
+                        <label for="nameEdit" class="col-form-label">Name</label>
+                        <input type="text" class="form-control" id="nameEdit" name="name">
                     </div>
 
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Surname</label>
-                        <input type="text" class="form-control" id="surnameEdit" name="surnameEdit">
+                        <label for="surnameEdit" class="col-form-label">Surname</label>
+                        <input type="text" class="form-control" id="surnameEdit" name="surname">
                     </div>
 
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Email</label>
-                        <input type="text" class="form-control" id="emailEdit" name="emailEdit">
+                        <label for="emailEdit" class="col-form-label">Email</label>
+                        <input type="text" class="form-control" id="emailEdit" name="email">
                     </div>
 
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Username</label>
-                        <input type="text" class="form-control" id="usernameEdit" name="usernameEdit">
+                        <label for="usernameEdit" class="col-form-label">Username</label>
+                        <input type="text" class="form-control" id="usernameEdit" name="username">
                     </div>
 
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Password</label>
-                        <input type="text" class="form-control" id="recipient-name" name="passwordEdit">
+                        <label for="passwordEdit" class="col-form-label">Password</label>
+                        <input type="password" class="form-control" id="passwordEdit" name="password">
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">Edit</button>
                 </div>
             </div>
         </div>

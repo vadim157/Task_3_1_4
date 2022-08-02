@@ -15,9 +15,6 @@ $('document').ready(function () {
             $('#passwordEdit').val(user.password);
         });
 
-
         $('#editModal').modal();
-
     });
-
 })

@@ -74,10 +74,11 @@ public class UserServiceImpl implements UserService {
     }
 
     ///////////////////////////////////////////////////////////////
-
-    public void saveUser(User updateUser){
+    @Transactional
+    public void saveUser(User updateUser) {
         userRepository.save(updateUser);
     }
+
 
 
 }
