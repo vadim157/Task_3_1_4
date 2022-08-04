@@ -13,8 +13,12 @@ $('document').ready(function () {
             $('#emailEdit').val(user.email);
             $('#usernameEdit').val(user.username);
             $('#passwordEdit').val(user.password);
+            $('#rolesEdit').val(user.roles.id);
         });
 
         $('#editModal').modal();
     });
-})
+
+});
+
+

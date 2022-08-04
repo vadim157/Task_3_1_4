@@ -6,4 +6,7 @@ import ru.kata.spring.boot_security.demo.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
     User findByUsername(String name);
+
+    @Override
+    <S extends User> S save(S entity);
 }

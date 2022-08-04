@@ -73,6 +73,12 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
+    @Transactional
+    @Override
+    public List<Role> listRoles() {
+        return roleRepository.findAll();
+    }
+
     ///////////////////////////////////////////////////////////////
     @Transactional
     public void saveUser(User updateUser) {

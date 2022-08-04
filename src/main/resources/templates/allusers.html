@@ -38,8 +38,10 @@
                 <td th:text="${user.email}">VALUE</td>
                 <td th:text="${user.username}">VALUE</td>
                 <td th:text="${user.roles}">VALUE</td>
-                <td><button th:href="@{/admin/getOne/(id=${user.id})}" class="btn btn-secondary">Edit</button></td>
-<!--                <td><a style="color: blueviolet" th:href="@{/admin/{id}/edit(id=${user.getId()})}">Edit</a></td>-->
+                <td>
+                    <button th:href="@{/admin/getOne/(id=${user.id})}" class="btn btn-secondary">Edit</button>
+                </td>
+                <!--                <td><a style="color: blueviolet" th:href="@{/admin/{id}/edit(id=${user.getId()})}">Edit</a></td>-->
                 <td><a style="color: blueviolet" th:href="@{/admin/delete/{id}(id=${user.getId()})}">Delete</a></td>
 
 
@@ -58,7 +60,7 @@
 <!--//////////////////////Модальное окно редактирования/////////////////-->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
-    <form th:action="@{/admin/update/}" th:method="PUT" >
+    <form th:action="@{/admin/update/}" th:method="PUT">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -70,8 +72,8 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="idEdit" class="col-form-label" >Id</label>
-                        <input type="text" class="form-control" id="idEdit" name="id" disabled>
+                        <label for="idEdit" class="col-form-label">Id</label>
+                        <input type="text" class="form-control" id="idEdit" name="id" readonly>
                     </div>
 
                     <div class="form-group">
@@ -99,6 +101,30 @@
                         <input type="password" class="form-control" id="passwordEdit" name="password">
                     </div>
 
+                    <!--                    <div class="form-group">-->
+                    <!--                        <label for="rolesEdit" class="col-form-label">Roles</label>-->
+                    <!--                        <input type="text" class="form-control" id="rolesEdit" name="roles">-->
+                    <!--                    </div>-->
+
+                    <!--                    <select class="form-select" id="rolesEdit" name="roles" aria-label="Disabled select example">-->
+                    <!--                        <option selected>Откройте это меню выбора</option>-->
+                    <!--                        <option value="1">USER</option>-->
+                    <!--                        <option value="2">ADMIN</option>-->
+                    <!--                    </select>-->
+
+                    <!--                    <select class="form-select form-select-lg mb-10" id="rolesEdit" name="roles" aria-label=".form-select-lg 10">-->
+                    <!--                        <option value="1">USER</option>-->
+                    <!--                        <option value="2">ADMIN</option>-->
+                    <!--                    </select>-->
+                    <div>
+                        <label>Roles</label>
+                        <select class="form-select-lg mb-10" size="2"  id="rolesEdit" name="roles" multiple
+                                aria-label="пример множественного выбора">
+                            <option value="1">USER</option>
+                            <option value="2">ADMIN</option>
+                        </select>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -109,6 +135,10 @@
     </form>
 </div>
 <!--////////////////////////////////////////////////конец модального окна редактирования///////////////////////-->
+<!--///////////////////////////////////////////////////Модальное окно удаления////////////////////////////////-->
+
+
+<!--///////////////////////////////////////////////////конец модального окна удаления////////////////////////////////-->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"

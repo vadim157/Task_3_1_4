@@ -39,8 +39,12 @@
 
     <br/>
     <br/>
-    <label for="email">Enter roles: </label>
-    <input  type="text" th:field="*{roles}" id="roles"style=position:absolute;left:9%;/>
+
+    <label  >Roles: </label>
+    <th:block th:each="role: ${listRoles}">
+        <input type="checkbox" th:field="*{roles}"
+               th:text="${role.name}" th:value="${role.id}" class="m-2" />
+    </th:block>
 <!--    <div style="color:red" th:if="${#fields.hasErrors('roles)}" th:errors="*{password}">Email Error</div>-->
 
 

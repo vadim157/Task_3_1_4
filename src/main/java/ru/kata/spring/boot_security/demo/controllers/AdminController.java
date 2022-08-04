@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -42,6 +44,7 @@ public class AdminController {
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") Long id) throws SQLException {
         model.addAttribute("user", userService.findById(id));
+        model.addAttribute("listRoles", userService.listRoles());
         return "/edit";
     }
 
@@ -70,11 +73,20 @@ public class AdminController {
         return userService.findById(id);
     }
 
-    @RequestMapping(value = "/update/",method = {RequestMethod.PUT, RequestMethod.GET})
+//    @RequestMapping(value = "/update/",method = {RequestMethod.PUT, RequestMethod.GET})
+    @PutMapping("/update")
     public String updateUser(User user) {
         userService.saveUser(user);
         return "redirect:/admin/";
     }
+
+//    @DeleteMapping("/delete")
+//    public String delete( Long id) {
+//        userService.delete(id);
+//        return "redirect:/admin/";
+//    }
+
+
 
 
 }
