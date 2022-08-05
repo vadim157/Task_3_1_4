@@ -110,7 +110,7 @@ public class User implements UserDetails {
     public String getStringRoles(){
        StringBuilder sb = new StringBuilder();
         for(Role role:roles){
-            sb.append(role);
+            sb.append(role).append(" ");
 
        } return sb.toString();
     }

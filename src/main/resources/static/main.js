@@ -1,6 +1,6 @@
 $('document').ready(function () {
 
-    $('.table .btn').on('click', function(event){
+    $('.table .btn-secondary').on('click', function(event){
 
         event.preventDefault();
 
@@ -18,6 +18,26 @@ $('document').ready(function () {
 
         $('#editModal').modal();
     });
+
+    $('.table #deleteButton').on('click', function(event){
+
+        event.preventDefault();
+
+        var href= $(this).attr('href');
+
+        $.get(href, function (user,status){
+            $('#idDelete').val(user.id);
+            $('#nameDelete').val(user.name);
+            $('#surnameDelete').val(user.surname);
+            $('#emailDelete').val(user.email);
+            $('#usernameDelete').val(user.username);
+            $('#passwordDelete').val(user.password);
+            $('#rolesDelete').val(user.roles.id);
+        });
+
+        $('#deleteModal').modal();
+    });
+
 
 });
 

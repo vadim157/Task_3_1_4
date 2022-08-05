@@ -37,12 +37,9 @@
                 <td th:text="${user.surname}">VALUE</td>
                 <td th:text="${user.email}">VALUE</td>
                 <td th:text="${user.username}">VALUE</td>
-                <td th:text="${user.roles}">VALUE</td>
-                <td>
-                    <button th:href="@{/admin/getOne/(id=${user.id})}" class="btn btn-secondary">Edit</button>
-                </td>
-                <!--                <td><a style="color: blueviolet" th:href="@{/admin/{id}/edit(id=${user.getId()})}">Edit</a></td>-->
-                <td><a style="color: blueviolet" th:href="@{/admin/delete/{id}(id=${user.getId()})}">Delete</a></td>
+                <td th:text="${user.getStringRoles()}">VALUE</td>
+                <td><a th:href="@{/admin/getOne/(id=${user.id})}" class="btn btn-secondary">Edit</a></td>
+                <td><a th:href="@{/admin/getOne/(id=${user.id})}"class="btn btn-danger" id="deleteButton">Delete</a></td>
 
 
             </tr>
@@ -106,20 +103,11 @@
                     <!--                        <input type="text" class="form-control" id="rolesEdit" name="roles">-->
                     <!--                    </div>-->
 
-                    <!--                    <select class="form-select" id="rolesEdit" name="roles" aria-label="Disabled select example">-->
-                    <!--                        <option selected>Откройте это меню выбора</option>-->
-                    <!--                        <option value="1">USER</option>-->
-                    <!--                        <option value="2">ADMIN</option>-->
-                    <!--                    </select>-->
-
-                    <!--                    <select class="form-select form-select-lg mb-10" id="rolesEdit" name="roles" aria-label=".form-select-lg 10">-->
-                    <!--                        <option value="1">USER</option>-->
-                    <!--                        <option value="2">ADMIN</option>-->
-                    <!--                    </select>-->
-                    <div>
+                    <div class="form-group">
                         <label>Roles</label>
-                        <select class="form-select-lg mb-10" size="2"  id="rolesEdit" name="roles" multiple
-                                aria-label="пример множественного выбора">
+                        </br>
+                        <select class="custom-select w-100" size="2"  id="rolesEdit" name="roles" multiple
+                                aria-label="roles select">
                             <option value="1">USER</option>
                             <option value="2">ADMIN</option>
                         </select>
@@ -135,8 +123,74 @@
     </form>
 </div>
 <!--////////////////////////////////////////////////конец модального окна редактирования///////////////////////-->
+
+
 <!--///////////////////////////////////////////////////Модальное окно удаления////////////////////////////////-->
 
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+    <form th:action="@{/admin/delete/}" th:method="DELETE">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="idEdit" class="col-form-label">Id</label>
+                        <input type="text" class="form-control" id="idDelete" name="id" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nameEdit" class="col-form-label">Name</label>
+                        <input type="text" class="form-control" id="nameDelete" name="name" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surnameEdit" class="col-form-label">Surname</label>
+                        <input type="text" class="form-control" id="surnameDelete" name="surname" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailEdit" class="col-form-label">Email</label>
+                        <input type="text" class="form-control" id="emailDelete" name="email" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usernameEdit" class="col-form-label">Username</label>
+                        <input type="text" class="form-control" id="usernameDelete" name="username" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordEdit" class="col-form-label">Password</label>
+                        <input type="password" class="form-control" id="passwordDelete" name="password" readonly>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Roles</label>
+                        </br>
+                        <select class="custom-select w-100" size="2"  id="rolesDelete" name="roles" multiple
+                                aria-label="пример множественного выбора" disabled>
+                            <option value="1">USER</option>
+                            <option value="2">ADMIN</option>
+                        </select>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
 <!--///////////////////////////////////////////////////конец модального окна удаления////////////////////////////////-->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

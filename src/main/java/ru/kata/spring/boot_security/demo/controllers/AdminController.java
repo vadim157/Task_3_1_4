@@ -60,11 +60,11 @@ public class AdminController {
         return "redirect:/admin/";
     }
 
-    @DeleteMapping("/{id}")
-    public String delete(@ModelAttribute("id") Long id) {
-        userService.delete(id);
-        return "redirect:/admin/";
-    }
+//    @DeleteMapping("/{id}")
+//    public String delete(@ModelAttribute("id") Long id) {
+//        userService.delete(id);
+//        return "redirect:/admin/";
+//    }
 
     ///////////////////////////////////////////////////////////
     @GetMapping("/getOne")
@@ -81,10 +81,11 @@ public class AdminController {
     }
 
 //    @DeleteMapping("/delete")
-//    public String delete( Long id) {
-//        userService.delete(id);
-//        return "redirect:/admin/";
-//    }
+    @RequestMapping(value = "/delete",method = {RequestMethod.DELETE,RequestMethod.GET})
+    public String delete( Long id) {
+        userService.delete(id);
+        return "redirect:/admin/";
+    }
 
 
 
