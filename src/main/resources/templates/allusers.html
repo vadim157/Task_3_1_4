@@ -11,9 +11,20 @@
     <title>Users</title>
 </head>
 <body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+<!--            место для шапки-->
+        </div>
+
+        <div class="col-10" style="background-color: #f2f2f2" ><h1>Admin panel</h1>
+
 <div th:switch="${users}">
     <h2 th:case="null">No User found!</h2>
     <div th:case="*">
+
+
         <h2>Users</h2>
         <table class="table table-striped">
             <thead>
@@ -50,6 +61,11 @@
 
     <p><a style="color: blueviolet" href="/admin/new">Create New User</a></p>
     <p><a style="color: blueviolet" href="/logout">Logout</a></p>
+
+</div>
+
+        </div>
+    </div>
 
 </div>
 
