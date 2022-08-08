@@ -54,17 +54,9 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void save(User user) {
-        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+//        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-    }
-
-    @Transactional
-    @Override
-    public void update(Long id, User updateUser) {
-        updateUser.setId(id);
-        userRepository.save(updateUser);
-
     }
 
     @Transactional
@@ -72,19 +64,5 @@ public class UserServiceImpl implements UserService {
     public void delete(Long id) {
         userRepository.deleteById(id);
     }
-
-    @Transactional
-    @Override
-    public List<Role> listRoles() {
-        return roleRepository.findAll();
-    }
-
-    ///////////////////////////////////////////////////////////////
-    @Transactional
-    public void saveUser(User updateUser) {
-        userRepository.save(updateUser);
-    }
-
-
 
 }

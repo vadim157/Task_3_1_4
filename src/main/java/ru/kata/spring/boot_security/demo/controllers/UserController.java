@@ -19,8 +19,6 @@ public class UserController {
         User user = (User) authentication.getPrincipal();
         model.addAttribute(user);
         return "/showUserInfo";
-
-
-
     }
+
 }

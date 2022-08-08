@@ -107,15 +107,13 @@ public class User implements UserDetails {
         this.roles.add(role);
     }
 
-    public String getStringRoles(){
-       StringBuilder sb = new StringBuilder();
-        for(Role role:roles){
-            sb.append(role).append(" ");
-
-       } return sb.toString();
+    public String getStringRoles() {
+        StringBuilder sb = new StringBuilder();
+        for (Role role : roles) {
+            sb.append(role.toString().replaceAll("ROLE_", "")).append(" ");
+        }
+        return sb.toString();
     }
-
-
 
 
     @Override

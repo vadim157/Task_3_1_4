@@ -2,11 +2,52 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>User</title>
 </head>
 <body>
-<table class="table">
+
+
+<div>
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        <strong><span th:text="${user.getEmail()}" style="color: #f2f2f2">VALUE</span></strong>
+        &nbsp
+        <span style="color: #f2f2f2">with roles:</span>
+        &nbsp
+        <span th:text="${user.getStringRoles()}" style="color: #f2f2f2">VALUE</span>
+        <span style="position: absolute;left: 95%;"> <a class="navbar-brand " style="color: cadetblue"  href="/logout">Logout</a></span>
+    </nav>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-2">
+            </br>
+            <div sec:authorize="hasRole('ROLE_ADMIN')"><p><a class="btn btn-link btn-block" href="/admin" role="button" >Admin</a><p></div>
+            <div><p><a  class="btn btn-primary btn-block" role="button" href="/user">User</a></p></div>
+        </div>
+
+        <div class="col-10" style=" height: 800px;background-color: #f2f2f2 "><h1>User information-page</h1>
+
+
+            <div class="card">
+                <div class="container-fluid" style="background-color: #f2f2f2">
+                    <h5 class="p-3">About user</h5>
+                </div>
+                <!--        <h2>Users</h2>-->
+                <div class="card">
+                    <div class="container">
+                        </br>
+
+
+<table class="table table-striped">
     <thead>
     <tr>
         <th scope="col">Id</th>
@@ -24,11 +65,23 @@
         <td th:text="${user.getSurname()}">VALUE</td>
         <td th:text="${user.getEmail()}">VALUE</td>
         <td th:text="${user.username}">VALUE</td>
-        <td th:text="${user.roles}">VALUE</td>
-
+        <td th:text="${user.getStringRoles()}">VALUE</td>
     </tr>
     </tbody>
 </table>
-<p><a href="/logout">Logout</a></p>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+</div>
+<!--<p><a href="/logout">Logout</a></p>-->
 </body>
 </html>
