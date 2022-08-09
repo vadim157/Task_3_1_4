@@ -32,7 +32,7 @@
             <div><p><a  class="btn btn-link btn-block" role="button" href="/user">User</a></p></div>
         </div>
 
-        <div class="col-10" style="background-color: #f2f2f2"><h1>Admin panel</h1>
+        <div class="col-10" style="height: 800px;background-color: #f2f2f2"><h1>Admin panel</h1>
 
             <div th:switch="${users}">
                 <h2 th:case="null">No User found!</h2>
@@ -57,7 +57,7 @@
                                 <div class="container-fluid" style="background-color: #f2f2f2">
                                     <h5 class="p-3">All Users</h5>
                                 </div>
-                                <!--        <h2>Users</h2>-->
+
                                 <div class="card">
                                     <div class="container">
                                         </br>
@@ -161,25 +161,13 @@
                             </div>
                         </div>
                     </div>
-                    </br>
-                    </br>
-                    </br>
-                    </br>
-                    </br>
-                    </br>
-                    </br>
-                    </br>
-                    </br>
-                    </br>
-
-<!--                    <p><a style="color: blueviolet" href="/logout">Logout</a></p>-->
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!--//////////////////////Модальное окно редактирования/////////////////-->
+<!--                                  Modal window edit-->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
     <form th:action="@{/admin/update/}" th:method="PUT"style="text-align: center; font-weight:bold">
@@ -243,11 +231,9 @@
         </div>
     </form>
 </div>
-<!--////////////////////////////////////////////////конец модального окна редактирования///////////////////////-->
 
 
-<!--///////////////////////////////////////////////////Модальное окно удаления////////////////////////////////-->
-
+<!--                                               Modal window delete-->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
     <form th:action="@{/admin/delete/}" th:method="DELETE" style="text-align: center; font-weight:bold">
@@ -313,7 +299,6 @@
     </form>
 </div>
 
-<!--///////////////////////////////////////////////////конец модального окна удаления////////////////////////////////-->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
