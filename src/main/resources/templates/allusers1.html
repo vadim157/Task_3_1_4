@@ -32,7 +32,7 @@
             <div><p><a  class="btn btn-link btn-block" role="button" href="/user">User</a></p></div>
         </div>
 
-        <div class="col-10" style="height: auto; min-height: 800px;background-color: #f2f2f2"><h1>Admin panel</h1>
+        <div class="col-10" style="height: 800px;background-color: #f2f2f2"><h1>Admin panel</h1>
 
             <div th:switch="${users}">
                 <h2 th:case="null">No User found!</h2>
@@ -61,7 +61,7 @@
                                 <div class="card">
                                     <div class="container">
                                         </br>
-                                        <table class="table table-striped" id="tableId">
+                                        <table class="table table-striped">
                                             <thead>
                                             <tr>
                                                 <th>Id</th>
@@ -76,19 +76,19 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-<!--                                            <tr th:each="user: ${users}">-->
-<!--                                                <td th:text="${user.id}">VALUE</td>-->
-<!--                                                <td th:text="${user.name}">VALUE</td>-->
-<!--                                                <td th:text="${user.surname}">VALUE</td>-->
-<!--                                                <td th:text="${user.email}">VALUE</td>-->
-<!--                                                <td th:text="${user.username}">VALUE</td>-->
-<!--                                                <td th:text="${user.getStringRoles()}">VALUE</td>-->
-<!--                                                <td><a th:href="@{/admin/getOne/(id=${user.id})}"-->
-<!--                                                       class="btn btn-secondary">Edit</a></td>-->
-<!--                                                <td><a th:href="@{/admin/getOne/(id=${user.id})}" class="btn btn-danger"-->
-<!--                                                       id="deleteButton">Delete</a></td>-->
+                                            <tr th:each="user: ${users}">
+                                                <td th:text="${user.id}">VALUE</td>
+                                                <td th:text="${user.name}">VALUE</td>
+                                                <td th:text="${user.surname}">VALUE</td>
+                                                <td th:text="${user.email}">VALUE</td>
+                                                <td th:text="${user.username}">VALUE</td>
+                                                <td th:text="${user.getStringRoles()}">VALUE</td>
+                                                <td><a th:href="@{/admin/getOne/(id=${user.id})}"
+                                                       class="btn btn-secondary">Edit</a></td>
+                                                <td><a th:href="@{/admin/getOne/(id=${user.id})}" class="btn btn-danger"
+                                                       id="deleteButton">Delete</a></td>
 
-<!--                                            </tr>-->
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -110,38 +110,38 @@
                                         <div class="col-4">
                                     <!--                                        место для форм-->
 
-                                    <form class="add-post-form"
+                                    <form th:method="POST" th:action="@{/admin/new}" th:object="${user}"
                                           style="text-align: center; font-weight:bold">
                                         <div class="form-group">
-                                            <label for="nameAdd">Name</label>
-                                            <input type="text"  class="form-control" id="nameAdd"
+                                            <label for="name">Name</label>
+                                            <input type="text" th:field="*{name}" class="form-control" id="name"
                                                    placeholder="Name">
                                         </div>
                                         <div class="form-group">
-                                            <label for="surnameAdd">Surname</label>
-                                            <input type="text"  class="form-control" id="surnameAdd"
+                                            <label for="surname">Surname</label>
+                                            <input type="text" th:field="*{surname}" class="form-control" id="surname"
                                                    placeholder="Surname">
                                         </div>
                                         <div class="form-group">
-                                            <label for="emailAdd">Email</label>
-                                            <input type="email"  class="form-control" id="emailAdd"
+                                            <label for="email">Email</label>
+                                            <input type="email" th:field="*{email}" class="form-control" id="email"
                                                    placeholder="Email">
                                         </div>
                                         <div class="form-group">
-                                            <label for="usernameAdd">Username</label>
-                                            <input type="text"  class="form-control" id="usernameAdd"
+                                            <label for="username">Username</label>
+                                            <input type="text" th:field="*{username}" class="form-control" id="username"
                                                    placeholder="Username">
 
                                         </div>
                                         <div class="form-group">
-                                            <label for="passwordAdd">Password</label>
-                                            <input type="password" class="form-control"
-                                                   id="passwordAdd" placeholder="Password">
+                                            <label for="password">Password</label>
+                                            <input type="password" th:field="*{password}" class="form-control"
+                                                   id="password" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <label>Roles</label>
                                             </br>
-                                            <select class="custom-select w-100" size="2" id="rolesAdd" name="roles"
+                                            <select class="custom-select w-100" size="2" id="roles" name="roles"
                                                     multiple
                                                     aria-label="roles select">
                                                 <option value="1">USER</option>
@@ -308,8 +308,5 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 <script type="text/javascript" src="../static/main.js" th:src="@{/main.js}"></script>
-
-<script type="text/javascript" src="/addNewUser.js"></script>
-<script type="text/javascript" src="/showUsers.js"></script>
 </body>
 </html>
