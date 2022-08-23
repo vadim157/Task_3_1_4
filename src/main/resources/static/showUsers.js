@@ -12,14 +12,11 @@ const showUsers = (users) => {
                 <td>${user.email}</td>
                 <td>${user.username}</td>
                 <td>${user.roles?.map(roles => roles.name === 'ROLE_USER' ? ' USER' : ' ADMIN')}</td>
-                <td></td>
-                <td></td></tr>`
+                <td><a class="btnEdit btn btn-secondary" id="editButton">Edit</a></td>
+                <td><a class="btn btn-danger" id="deleteButton">Delete</a></td>
+                </tr>`
 
 
-
-        //     <td><a class="btnEdit btn btn-secondary" id="editButton">Edit</a></td>
-        //     <td><a class="btn btn-danger" id="deleteButton">Delete</a></td>
-        // </tr>`
     })
     container.innerHTML = result
 }
