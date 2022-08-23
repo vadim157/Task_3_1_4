@@ -36,6 +36,9 @@ public class UserRestController {
 
     @PutMapping("/users")
     public User updateNewUser(@RequestBody User user) {
+        if(user.getRoles() == null){
+            user.setRoles(userService.findById(user.getId()).getRoles());
+        }
         userService.save(user);
         return user;
     }
