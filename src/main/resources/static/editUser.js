@@ -1,12 +1,5 @@
-
-
 const edit = new bootstrap.Modal(document.getElementById('editModal'))
 const editModal = document.querySelector('.edit-form')
-// const passwordEditValue = document.getElementById('passwordEdit')
-// const nameEditValue = document.getElementById('nameEdit')
-// const surnameEditValue = document.getElementById('surnameEdit')
-// const emailEditValue = document.getElementById('emailEdit')
-// const usernameEditValue = document.getElementById('usernameEdit')
 const passwordEditValue = document.getElementById('passwordEdit')
 const roleEditValue = document.getElementById('rolesEdit')
 const UserOrAdminEdit = roleEditValue === 1? 'ROLE_USER':'ROLE_ADMIN'
@@ -27,7 +20,7 @@ on(document, 'click','.btnEdit', e => {
     const surnameForm = line.children[2].innerHTML
     const emailForm = line.children[3].innerHTML
     const usernameForm = line.children[4].innerHTML
-    // const rolesForm = line.children[5].innerHTML
+    const rolesForm = line.children[5].innerHTML
 
     console.log(`${idForm}  ${nameForm} ${surnameForm} ${emailForm} ${usernameForm} `)
 
@@ -36,8 +29,6 @@ on(document, 'click','.btnEdit', e => {
     surnameEdit.value = surnameForm
     emailEdit.value = emailForm
     usernameEdit.value = usernameForm
-    // passwordEdit.value = passwordEditValue
-    // rolesEdit.value = rolesForm
 
     edit.show()
 

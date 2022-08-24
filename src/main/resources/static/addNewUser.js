@@ -11,8 +11,6 @@ const UserOrAdmin = roleValue === 1? 'ROLE_USER':'ROLE_ADMIN'
 addPostForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    // console.log(nameValue.value + ' ' + surnameValue.value + ' ' + emailValue.value + ' ' + usernameValue.value + ' ' + passwordValue.value + ' ' + roleValue.value)
-
     fetch(url, {
         method: 'POST',
         headers: {
@@ -39,7 +37,7 @@ addPostForm.addEventListener('submit', (e) => {
             dataArr.push(data);
             showUsers(dataArr);
             console.log(user);
-        })
+        }).then(()=>location.reload())
     e.target.reset();
 
 })
