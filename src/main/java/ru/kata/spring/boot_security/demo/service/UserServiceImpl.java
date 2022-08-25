@@ -15,6 +15,7 @@ import ru.kata.spring.boot_security.demo.repository.UserRepository;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Transactional(readOnly = true)

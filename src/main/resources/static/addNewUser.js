@@ -10,7 +10,7 @@ const UserOrAdmin = roleValue === 1? 'ROLE_USER':'ROLE_ADMIN'
 
 addPostForm.addEventListener('submit', (e) => {
     e.preventDefault()
-
+console.log(roleValue.value)
     fetch(url, {
         method: 'POST',
         headers: {
