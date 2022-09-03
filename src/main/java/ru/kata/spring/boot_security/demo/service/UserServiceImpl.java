@@ -50,10 +50,6 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public boolean save(User user) {
-        User userFromDB = userRepository.findByUsername(user.getUsername());
-        if (userFromDB != null) {
-            return false;
-        }
         if (user.getPassword() == null || user.getPassword().equals("")) {
             user.setPassword(findById(user.getId()).getPassword());
             userRepository.save(user);

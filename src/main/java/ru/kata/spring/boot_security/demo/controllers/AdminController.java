@@ -27,30 +27,6 @@ public class AdminController {
         return "allusers";
     }
 
-    @PostMapping("/new")
-    public String create(@ModelAttribute("user") User user) {
-        userService.save(user);
-        return "redirect:/admin/";
-    }
-
-    @GetMapping("/getOne")
-    @ResponseBody
-    public User getOne(Long id) {
-        return userService.findById(id);
-    }
-
-    @PutMapping("/update")
-    public String updateUser(User user) {
-        userService.save(user);
-        return "redirect:/admin/";
-    }
-
-    @DeleteMapping("/delete")
-    public String delete( Long id) {
-        userService.delete(id);
-        return "redirect:/admin/";
-    }
-
 }
 
 
